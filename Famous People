@@ -1,0 +1,38 @@
+CREATE TABLE country_singers (id INTEGER PRIMARY KEY, name TEXT, top_song TEXT);
+
+INSERT INTO country_singers VALUES (1, "Maren Morris", "The Bones");
+INSERT INTO country_singers VALUES (2, "Ryan Hurd", "To a T");
+INSERT INTO country_singers VALUES (3, "Tim Mcgraw", "Just to see you smile");
+INSERT INTO country_singers VALUES (4, "Faith Hill", "This Kiss");
+INSERT INTO country_singers VALUES (5, "Keith Urban", "Somebody like You");
+INSERT INTO country_singers VALUES (6, "Nicole Kidman", "Somthin' Stupid");
+INSERT INTO country_singers VALUES (7, "Kane Brown", "Thank God");
+INSERT INTO country_singers VALUES (8, "Katelyn Jae", "Perfect");
+INSERT INTO country_singers VALUES (9, "Carrie Underwood", "Befroe He Cheats");
+INSERT INTO country_singers VALUES (10, "Mike Fisher", "In the Morning");
+
+CREATE TABLE singer_hobbies (singer_id INTEGER PRIMARY KEY, hobby TEXT);
+INSERT INTO singer_hobbies VALUES (1, "Shopping");
+INSERT INTO singer_hobbies VALUES (8, "Shopping");
+INSERT INTO singer_hobbies VALUES (2, "Golf");
+INSERT INTO singer_hobbies VALUES (10, "Golf");
+INSERT INTO singer_hobbies VALUES (3, "Boating");
+INSERT INTO Singer_hobbies VALUES (4, "Boating");
+INSERT INTO singer_hobbies VALUES (5, "ATV");
+INSERT INTO singer_hobbies VALUES (7, "ATV");
+INSERT INTO singer_hobbies VALUES (6, "Make Up");
+INSERT INTO singer_hobbies VALUES (9, "Make Up");
+
+CREATE TABLE singer_marriages (id INTEGER PRIMARY KEY, singer1_id INTEGER, singer2_id INTEGER); 
+INSERT INTO singer_marriages VALUES (1,1,2);
+INSERT INTO singer_marriages VALUES (2,3,4);
+INSERT INTO singer_marriages VALUES (3,5,6);
+INSERT INTO singer_marriages VALUES (4,7,8);
+INSERT INTO singer_marriages VALUES (5,9,10);
+
+
+SELECT country_singers.name, singer_hobbies.hobby FROM country_singers LEFT OUTER JOIN singer_hobbies ON country_singers.id = singer_hobbies.singer_id;
+
+SELECT a.name ,b.name FROM singer_marriages JOIN country_singers a ON singer_marriages.singer1_id = a.id JOIN country_singers b ON singer_marriages.singer2_id = b.id;
+
+SELECT country_singers.name, singer_hobbies.hobby FROM country_singers JOIN singer_hobbies ON country_singers.id = singer_hobbies.singer_id GROUP BY name;
